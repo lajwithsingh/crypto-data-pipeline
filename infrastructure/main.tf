@@ -182,8 +182,8 @@ resource "aws_lambda_function" "ingest" {
   description   = "Ingests cryptocurrency data from CoinCap API"
 
   # Code will be uploaded via S3 or zip file
-  filename         = "${path.module}/../src/lambda/lambda_package.zip"
-  source_code_hash = fileexists("${path.module}/../src/lambda/lambda_package.zip") ? filebase64sha256("${path.module}/../src/lambda/lambda_package.zip") : null
+  filename         = "${path.module}/../src/ingest_lambda/lambda_package.zip"
+  source_code_hash = fileexists("${path.module}/../src/ingest_lambda/lambda_package.zip") ? filebase64sha256("${path.module}/../src/ingest_lambda/lambda_package.zip") : null
 
   handler     = "ingest.lambda_handler"
   runtime     = "python3.9"

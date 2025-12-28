@@ -12,7 +12,7 @@ import os
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', 'src', 'etl_job'))
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', 'src'))
 
-from etl_job.etl_job import transform_and_validate, REQUIRED_COLS
+from etl_job.transform import transform_and_validate, REQUIRED_COLS
 
 
 class TestTransformAndValidate:
