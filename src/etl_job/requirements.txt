@@ -1,0 +1,4 @@
+# ETL Job Dependencies
+boto3>=1.26.0
+pandas>=1.5.0
+awswrangler>=3.0.0

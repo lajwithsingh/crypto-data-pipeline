@@ -1,0 +1,101 @@
+# --- 1. TERRAFORM (CRITICAL SECURITY) ---
+# .tfstate files contain your actual infrastructure data (IDs, IPs, Passwords).
+# NEVER commit these. In a team, we store these in S3, but for now, keep them local and hidden.
+*.tfstate
+*.tfstate.*
+*.tfvars
+*.tfvars.json
+.terraform/
+.terraform.lock.hcl
+terraform.rc
+.*terraformrc
+crash.log
+crash.*.log
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# --- 2. PYTHON (CLEAN CODE) ---
+# Bytecode and cache files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Distribution / Packaging
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# --- 3. VIRTUAL ENVIRONMENTS ---
+# Never commit libraries; we use requirements.txt instead.
+venv/
+env/
+ENV/
+.env
+.venv
+.python-version
+
+# --- 4. IDE & OS JUNK ---
+# Keep the repo clean of your personal settings
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# --- 5. BUILD ARTIFACTS ---
+# Zipped Lambda functions (and any other zip packages) should not be committed.
+*.zip
+lambda_package/
+
+# --- 6. TESTING & COVERAGE ---
+# Test artifacts and coverage reports
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+.tox/
+.nox/
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+test-results.xml
+junit.xml
+
+# --- 7. MYPY / TYPE CHECKING ---
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# --- 8. JUPYTER NOTEBOOKS ---
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+
+# --- 9. SECRETS & CREDENTIALS ---
+# NEVER commit credentials
+*.pem
+*.key
+secrets.json
+credentials.json
+.aws/
+
+# --- 10. LOGS ---
+*.log
+logs/
