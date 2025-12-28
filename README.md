@@ -77,7 +77,7 @@ terraform init
 terraform apply
 
 # 2. Package Lambdas
-cd ../src/lambda
+cd ../src/ingest_lambda
 pip install -r requirements.txt -t . && cp -r ../common . && zip -r lambda_package.zip .
 cd ../etl_job
 pip install -r requirements.txt -t . && cp -r ../common . && zip -r etl_package.zip .
@@ -92,11 +92,21 @@ crypto-data-pipeline/
 │   ├── variables.tf        # Configuration
 │   └── outputs.tf          # Deployment outputs
 ├── src/
-│   ├── lambda/             # Ingest function
-│   ├── etl_job/            # ETL function
+│   ├── ingest_lambda/      # Ingest Lambda function
+│   │   ├── ingest.py       # Data ingestion with DQ validation
+│   │   └── requirements.txt
+│   ├── etl_job/            # ETL Lambda function
+│   │   ├── etl_job.py      # AWS integration (S3, Redshift)
+│   │   ├── transform.py    # Pure business logic (testable)
+│   │   └── requirements.txt
 │   └── common/             # Shared utilities
-├── tests/                  # Unit tests
+│       └── logging_utils.py
+├── tests/                  # Unit tests (28 tests)
+│   ├── test_lambda_ingest.py
+│   └── test_etl_job.py
 ├── .github/workflows/      # CI/CD
+│   └── ci.yml
+├── pyproject.toml          # Python project config
 └── README.md
 ```
 
