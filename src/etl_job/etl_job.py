@@ -1,6 +1,5 @@
 import sys
 import os
-import argparse
 import boto3
 import pandas as pd
 import awswrangler as wr
@@ -166,30 +165,3 @@ def lambda_handler(event: Dict[str, Any], context: Any) -> Dict[str, Any]:
     except Exception as e:
         logger.error("ETL Job Failed", exc_info=True)
         raise e
-
-
-# --- CLI ENTRY POINT ---
-if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description='Crypto ETL Pipeline')
-    parser.add_argument('--bucket', required=True, help='S3 bucket name')
-    parser.add_argument('--secret-name', required=True, help='Secrets Manager secret ID')
-    parser.add_argument('--region', default='us-east-1', help='AWS region')
-    parser.add_argument('--table-name', default='fact_crypto_prices', help='Redshift table')
-    parser.add_argument('--schema-name', default='public', help='Redshift schema')
-    parser.add_argument('--iam-role', default=None, help='IAM role ARN for Redshift COPY')
-    
-    args = parser.parse_args()
-    
-    try:
-        result = run_etl_pipeline(
-            bucket=args.bucket,
-            secret_name=args.secret_name,
-            region=args.region,
-            table_name=args.table_name,
-            schema_name=args.schema_name,
-            iam_role=args.iam_role
-        )
-        print(f"ETL Complete: {result}")
-    except Exception as e:
-        logger.error("Job Failed", exc_info=True)
-        sys.exit(1)
