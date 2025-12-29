@@ -9,7 +9,6 @@ import sys
 import os
 
 # Add src to path for imports
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', 'src', 'etl_job'))
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', 'src'))
 
 from etl_job.transform import transform_and_validate, REQUIRED_COLS

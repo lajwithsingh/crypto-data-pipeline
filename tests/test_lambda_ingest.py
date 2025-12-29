@@ -9,7 +9,6 @@ import sys
 import os
 
 # Add src to path for imports
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', 'src', 'ingest_lambda'))
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', 'src'))
 
 from ingest_lambda.ingest import DataQualityContract, validate_schema, run_ingestion_logic
